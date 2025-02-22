@@ -1,0 +1,407 @@
+/* Root Datepicker Container (MuiDateRangeCalendar-monthContainer.css-2jzgwo) */
+.react-datepicker-popper {
+  z-index: 10; /* Ensure it's above other elements if needed */
+}
+
+.react-datepicker {
+  display: block; /* display: block from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  position: static; /* position: static from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  width: 313px; /* width: 313px from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  height: 360px; /* height: 360px from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  background-color: white; /* background-color: rgba(0, 0, 0, 0) from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  color: rgba(
+    0,
+    0,
+    0,
+    0.87
+  ); /* color: rgba(0, 0, 0, 0.87) from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  margin: 0; /* margin: 0px from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  padding: 0; /* padding: 0px from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  border: none; /* border: "" from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  z-index: auto; /* z-index: auto from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  opacity: 1; /* opacity: 1 from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  transform: none; /* transform: none from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  box-shadow: #f2f4f7 0px 0px 10px 6px; /* box-shadow from original css, keep it */
+  overflow: visible; /* overflow: visible from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  visibility: visible; /* visibility: visible from MuiDateRangeCalendar-monthContainer.css-2jzgwo */
+  border-radius: 4px; /* Add border-radius to match MUI */
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; /* MUI default font */
+}
+
+/* Header Styles (MuiPickersArrowSwitcher-root.css-gj32dp) */
+.react-datepicker__header {
+  display: flex; /* display: flex from MuiPickersArrowSwitcher-root.css-gj32dp */
+  flex-direction: column;
+  align-items: center;
+  position: static; /* position: static from MuiPickersArrowSwitcher-root.css-gj32dp */
+  width: 312px; /* width: 312px from MuiPickersArrowSwitcher-root.css-gj32dp */
+  height: 56px; /* height: 56px from MuiPickersArrowSwitcher-root.css-gj32dp */
+  background-color: transparent; /* background-color: rgba(0, 0, 0, 0) from MuiPickersArrowSwitcher-root.css-gj32dp */
+  color: rgba(
+    0,
+    0,
+    0,
+    0.87
+  ); /* color: rgba(0, 0, 0, 0.87) from MuiPickersArrowSwitcher-root.css-gj32dp */
+  margin: 0px; /* margin: 0px from MuiPickersArrowSwitcher-root.css-gj32dp */
+  padding: 12px 16px 4px; /* padding: 12px 16px 4px from MuiPickersArrowSwitcher-root.css-gj32dp */
+  border: 0 none rgba(0, 0, 0, 0.87); /* border: 0px none rgba(0, 0, 0, 0.87) from MuiPickersArrowSwitcher-root.css-gj32dp */
+  z-index: auto; /* z-index: auto from MuiPickersArrowSwitcher-root.css-gj32dp */
+  opacity: 1; /* opacity: 1 from MuiPickersArrowSwitcher-root.css-gj32dp */
+  transform: none; /* transform: none from MuiPickersArrowSwitcher-root.css-gj32dp */
+  box-shadow: none; /* box-shadow: none from MuiPickersArrowSwitcher-root.css-gj32dp */
+  overflow: visible; /* overflow: visible from MuiPickersArrowSwitcher-root.css-gj32dp */
+  visibility: visible; /* visibility: visible from MuiPickersArrowSwitcher-root.css-gj32dp */
+}
+
+/* Month Year Label ( #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l ) */
+.react-datepicker__current-month {
+  display: block; /* display: block from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  position: static; /* position: static from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  width: auto; /* width: auto - adjust as needed */
+  height: 28px; /* height: 28px from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  background-color: transparent; /* background-color: rgba(0, 0, 0, 0) from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  color: rgba(
+    0,
+    0,
+    0,
+    0.87
+  ); /* color: rgba(0, 0, 0, 0.87) from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  margin: 0px; /* margin: 0px from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  padding: 0px; /* padding: 0px from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  border: 0 none rgba(0, 0, 0, 0.87); /* border: 0px none rgba(0, 0, 0, 0.87) from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  z-index: auto; /* z-index: auto from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  opacity: 1; /* opacity: 1 from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  transform: none; /* transform: none from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  box-shadow: none; /* box-shadow: none from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  overflow: visible; /* overflow: visible from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  visibility: visible; /* visibility: visible from #r40:-grid-0-label.MuiTypography-root.MuiTypography-subtitle1.css-16rlg6l */
+  font-size: 1rem; /*  MUI subtitle1 font-size */
+  font-weight: 500; /* MUI subtitle1 font-weight */
+  line-height: 1.75; /* MUI subtitle1 line-height */
+  letter-spacing: 0.00938em; /* MUI subtitle1 letter-spacing */
+  text-transform: none; /* MUI subtitle1 text-transform */
+}
+
+/* Arrow Button ( MuiButtonBase-root.MuiIconButton-root...MuiPickersArrowSwitcher-button ) */
+.react-datepicker__navigation {
+  display: flex; /* display: flex from MuiButtonBase-root.MuiIconButton-root... */
+  position: relative; /* position: relative from MuiButtonBase-root.MuiIconButton-root... */
+  width: 40px; /* width: 40px from MuiButtonBase-root.MuiIconButton-root... */
+  height: 40px; /* height: 40px from MuiButtonBase-root.MuiIconButton-root... */
+  background-color: transparent; /* background-color: rgba(0, 0, 0, 0) from MuiButtonBase-root.MuiIconButton-root... */
+  color: rgba(
+    0,
+    0,
+    0,
+    0.54
+  ); /* color: rgba(0, 0, 0, 0.54) from MuiButtonBase-root.MuiIconButton-root... */
+  margin: 0; /* adjust margins below for prev/next buttons */
+  padding: 8px; /* padding: 8px from MuiButtonBase-root.MuiIconButton-root... */
+  border: 0 none rgba(0, 0, 0, 0.54); /* border: 0px none rgba(0, 0, 0, 0.54) from MuiButtonBase-root.MuiIconButton-root... */
+  z-index: auto; /* z-index: auto from MuiButtonBase-root.MuiIconButton-root... */
+  opacity: 1; /* opacity: 1 from MuiButtonBase-root.MuiIconButton-root... */
+  transform: none; /* transform: none from MuiButtonBase-root.MuiIconButton-root... */
+  box-shadow: none; /* box-shadow: none from MuiButtonBase-root.MuiIconButton-root... */
+  overflow: visible; /* overflow: visible from MuiButtonBase-root.MuiIconButton-root... */
+  visibility: visible; /* visibility: hidden from MuiButtonBase-root.MuiIconButton-root... - override below*/
+  border-radius: 50%; /* MUI IconButton border-radius */
+}
+
+.react-datepicker__navigation--previous {
+  margin-right: -12px; /* margin: 0px -12px 0px 0px from MuiButtonBase-root.MuiIconButton-root...previousIconButton.css-11wxb */
+  left: 0; /* Override react-datepicker default positioning */
+}
+
+.react-datepicker__navigation--next {
+  margin-left: -12px; /* margin: 0px 0px 0px -12px from MuiButtonBase-root.MuiIconButton-root...nextIconButton.css-10giph5 */
+  right: 0; /* Override react-datepicker default positioning */
+}
+
+.react-datepicker__navigation-icon::before {
+  /* This targets the chevron inside the button */
+  border-color: rgba(
+    0,
+    0,
+    0,
+    0.54
+  ); /* color: rgba(0, 0, 0, 0.54) from MuiButtonBase-root.MuiIconButton-root... */
+  border-style: solid;
+  border-width: 2px 2px 0 0;
+  content: '';
+  display: block;
+  height: 0.7em;
+  left: -2px;
+  position: absolute;
+  top: -2px;
+  transform: rotate(-135deg) translateY(-50%);
+  width: 0.7em;
+  /* visibility: hidden from svg - override below */
+  visibility: visible;
+}
+.react-datepicker__navigation--next .react-datepicker__navigation-icon::before {
+  transform: rotate(45deg) translateY(-50%);
+  left: -2px;
+}
+
+/* Day Calendar Root (MuiDayCalendar-root.css-0) */
+.react-datepicker__month-container {
+  position: static; /* position: static from MuiDayCalendar-root.css-0 */
+  width: 312px; /* width: 312px from MuiDayCalendar-root.css-0 */
+  height: 100%;
+  background-color: transparent; /* background-color: rgba(0, 0, 0, 0) from MuiDayCalendar-root.css-0 */
+  color: rgba(0, 0, 0, 0.87); /* color: rgba(0, 0, 0, 0.87) from MuiDayCalendar-root.css-0 */
+  margin: 0px; /* margin: 0px from MuiDayCalendar-root.css-0 */
+  padding: 0px; /* padding: 0px from MuiDayCalendar-root.css-0 */
+  border: 0 none rgba(0, 0, 0, 0.87); /* border: 0px none rgba(0, 0, 0, 0.87) from MuiDayCalendar-root.css-0 */
+  z-index: auto; /* z-index: auto from MuiDayCalendar-root.css-0 */
+  opacity: 1; /* opacity: 1 from MuiDayCalendar-root.css-0 */
+  transform: none; /* transform: none from MuiDayCalendar-root.css-0 */
+  box-shadow: none; /* box-shadow: none from MuiDayCalendar-root.css-0 */
+  overflow: visible; /* overflow: visible from MuiDayCalendar-root.css-0 */
+  visibility: visible; /* visibility: visible from MuiDayCalendar-root.css-0 */
+  padding-top: 8px; /* Add some top padding to align with MUI day calendar */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.react-datepicker__day-names {
+  display: flex; /* display: flex from MuiDayCalendar-header.css-1n2mv2k */
+  position: static; /* position: static from MuiDayCalendar-header.css-1n2mv2k */
+  width: 312px; /* width: 312px from MuiDayCalendar-header.css-1n2mv2k */
+  height: 40px; /* height: 40px from MuiDayCalendar-header.css-1n2mv2k */
+  background-color: transparent; /* background-color: rgba(0, 0, 0, 0) from MuiDayCalendar-header.css-1n2mv2k */
+  color: rgba(
+    0,
+    0,
+    0,
+    0.87
+  ); /* color: rgba(0, 0, 0, 0.87) from MuiDayCalendar-header.css-1n2mv2k */
+  margin: 0px; /* margin: 0px from MuiDayCalendar-header.css-1n2mv2k */
+  padding: 0px; /* padding: 0px from MuiDayCalendar-header.css-1n2mv2k */
+  border: 0 none rgba(0, 0, 0, 0.87); /* border: 0px none rgba(0, 0, 0, 0.87) from MuiDayCalendar-header.css-1n2mv2k */
+  z-index: auto; /* z-index: auto from MuiDayCalendar-header.css-1n2mv2k */
+  opacity: 1; /* opacity: 1 from MuiDayCalendar-header.css-1n2mv2k */
+  transform: none; /* transform: none from MuiDayCalendar-header.css-1n2mv2k */
+  box-shadow: none; /* box-shadow: none from MuiDayCalendar-header.css-1n2mv2k */
+  overflow: visible; /* overflow: visible from MuiDayCalendar-header.css-1n2mv2k */
+  visibility: visible; /* visibility: visible from MuiDayCalendar-header.css-1n2mv2k */
+  padding-bottom: 8px; /* Add padding below day names */
+}
+
+.react-datepicker__day-name {
+  display: flex; /* display: flex from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  position: static; /* position: static from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  width: 36px; /* width: 36px from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  height: 40px; /* height: 40px from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  background-color: transparent; /* background-color: rgba(0, 0, 0, 0) from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* color: rgba(0, 0, 0, 0.6) from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  margin: 0 2px; /* margin: 0px 2px from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  padding: 0px; /* padding: 0px from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  border: 0 none rgba(0, 0, 0, 0.6); /* border: 0px none rgba(0, 0, 0, 0.6) from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  z-index: auto; /* z-index: auto from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  opacity: 1; /* opacity: 1 from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  transform: none; /* transform: none from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  box-shadow: none; /* box-shadow: none from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  overflow: visible; /* overflow: visible from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  visibility: visible; /* visibility: visible from MuiTypography-root.MuiTypography-caption.MuiDayCalendar-weekDayLabel.css-10qkmc3 */
+  justify-content: center; /* Center text like MUI */
+  align-items: center; /* Center text vertically like MUI */
+  font-size: 0.75rem; /* MUI caption font-size */
+  font-weight: 400; /* MUI caption font-weight */
+  line-height: 1.66; /* MUI caption line-height */
+  letter-spacing: 0.03333em; /* MUI caption letter-spacing */
+  text-transform: none; /* MUI caption text-transform */
+}
+
+/* Day Grid Slide Transition (MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7) */
+.react-datepicker__month {
+  position: relative; /* position: relative from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  width: 312px; /* width: 312px from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  height: 264px; /* height: 264px from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  background-color: transparent; /* background-color: rgba(0, 0, 0, 0) from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  color: rgba(
+    0,
+    0,
+    0,
+    0.87
+  ); /* color: rgba(0, 0, 0, 0.87) from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  margin: 0px; /* margin: 0px from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  padding: 0px; /* padding: 0px from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  border: 0 none rgba(0, 0, 0, 0.87); /* border: 0px none rgba(0, 0, 0, 0.87) from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  z-index: auto; /* z-index: auto from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  opacity: 1; /* opacity: 1 from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  transform: none; /* transform: none from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  box-shadow: none; /* box-shadow: none from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  overflow: hidden auto; /* overflow: hidden auto from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+  visibility: visible; /* visibility: visible from MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-a1ysh7 */
+}
+
+/* Month Container (MuiDayCalendar-monthContainer.css-i6bazn) */
+.react-datepicker__month-wrapper {
+  display: block; /* display: block from MuiDayCalendar-monthContainer.css-i6bazn */
+  position: absolute; /* position: absolute from MuiDayCalendar-monthContainer.css-i6bazn */
+  width: 312px; /* width: 312px from MuiDayCalendar-monthContainer.css-i6bazn */
+  height: 212px; /* height: 212px from MuiDayCalendar-monthContainer.css-i6bazn - adjust if needed for rows */
+  background-color: transparent; /* background-color: rgba(0, 0, 0, 0) from MuiDayCalendar-monthContainer.css-i6bazn */
+  color: rgba(
+    0,
+    0,
+    0,
+    0.87
+  ); /* color: rgba(0, 0, 0, 0.87) from MuiDayCalendar-monthContainer.css-i6bazn */
+  margin: 0px; /* margin: 0px from MuiDayCalendar-monthContainer.css-i6bazn */
+  padding: 0px; /* padding: 0px from MuiDayCalendar-monthContainer.css-i6bazn */
+  border: 0 none rgba(0, 0, 0, 0.87); /* border: 0px none rgba(0, 0, 0, 0.87) from MuiDayCalendar-monthContainer.css-i6bazn */
+  z-index: auto; /* z-index: auto from MuiDayCalendar-monthContainer.css-i6bazn */
+  opacity: 1; /* opacity: 1 from MuiDayCalendar-monthContainer.css-i6bazn */
+  transform: none; /* transform: none from MuiDayCalendar-monthContainer.css-i6bazn */
+  box-shadow: none; /* box-shadow: none from MuiDayCalendar-monthContainer.css-i6bazn */
+  overflow: hidden; /* overflow: hidden from MuiDayCalendar-monthContainer.css-i6bazn */
+  visibility: visible; /* visibility: visible from MuiDayCalendar-monthContainer.css-i6bazn */
+}
+
+/* Day Styles (MuiPickersDay-root) & Range Styles (MuiDateRangePickerDay-root) - combined and adjusted */
+.react-datepicker__day {
+  display: flex; /* display: flex - to center content */
+  position: relative; /* position: relative from MuiButtonBase-root.MuiPickersDay-root... and MuiDateRangePickerDay-root */
+  width: 40px; /* adjust for size and spacing, MUI day width seems to be around 36px including spacing */
+  height: 40px; /* adjust for size and spacing */
+  background-color: transparent; /* background-color: rgba(0, 0, 0, 0) from MuiButtonBase-root.MuiPickersDay-root... */
+  color: rgba(
+    0,
+    0,
+    0,
+    0.87
+  ); /* color: rgba(0, 0, 0, 0.87) from MuiButtonBase-root.MuiPickersDay-root... */
+  margin: 1px; /* slight margin for spacing */
+  padding: 0px; /* padding: 0px from MuiButtonBase-root.MuiPickersDay-root... */
+  border: 0 none rgba(0, 0, 0, 0.87); /* border: 0px none rgba(0, 0, 0, 0.87) from MuiButtonBase-root.MuiPickersDay-root... */
+  z-index: auto; /* z-index: auto from MuiButtonBase-root.MuiPickersDay-root... */
+  opacity: 1; /* opacity: 1 from MuiButtonBase-root.MuiPickersDay-root... */
+  transform: none; /* transform: none from MuiButtonBase-root.MuiPickersDay-root... */
+  box-shadow: none; /* box-shadow: none from MuiButtonBase-root.MuiPickersDay-root... */
+  overflow: visible; /* overflow: visible from MuiButtonBase-root.MuiPickersDay-root... */
+  visibility: visible; /* visibility: visible from MuiButtonBase-root.MuiPickersDay-root... */
+  justify-content: center; /* center content horizontally */
+  align-items: center; /* center content vertically */
+  border-radius: 50%; /* Rounded days like MUI */
+  font-size: 0.875rem; /* MUI body2 font-size */
+  font-weight: 400; /* MUI body2 font-weight */
+  line-height: 1.43; /* MUI body2 line-height */
+  letter-spacing: 0.01071em; /* MUI body2 letter-spacing */
+  text-transform: none; /* MUI body2 text-transform */
+  cursor: pointer; /* MUI button cursor */
+  -webkit-tap-highlight-color: transparent; /* MUI button tap highlight */
+  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0ms; /* MUI button transition */
+}
+
+.react-datepicker__day:hover {
+  border: 1px solid #9e9e9e !important; /* MUI hover border */
+  border-radius: 50% !important; /* Rounded days like MUI */
+}
+
+.react-datepicker__day--today {
+  border: 1px solid rgba(0, 0, 0, 0.6) !important; /* MUI hover border */
+}
+
+.react-datepicker__day--today:hover {
+  border-color: #9e9e9e !important; /* MUI hover background */
+  background-color: rgba(25, 118, 210, 0.04) !important;
+}
+
+/* Range styles - Adapt your original range styles, adjusting for MUI look */
+.react-datepicker__day--in-range {
+  border-radius: 0 !important;
+  color: #fff !important;
+  background-color: rgba(25, 118, 210, 0.12) !important;
+  position: relative;
+}
+
+.react-datepicker__day--range-start,
+.react-datepicker__day--range-end {
+  border-radius: 50% !important;
+  color: #fff !important;
+  background-color: #1976d2 !important;
+}
+
+.react-datepicker__day--in-selecting-range {
+  border-width: 2px !important;
+  border-style: dashed !important;
+  border-radius: 0 !important; /* Keep rounded while selecting */
+  border-color: rgba(0, 0, 0, 0.12) transparent !important;
+  background-color: transparent !important;
+}
+
+.react-datepicker__day--in-selecting-range:hover {
+  background-color: transparent !important;
+  border: 1px solid #9e9e9e !important; /* MUI hover border */
+  border-radius: 50% !important; /* Rounded days like MUI */
+}
+
+.react-datepicker__day--selecting-range-start {
+  color: #fff !important;
+  background-color: #1976d2 !important;
+  font-weight: 500 !important;
+  border-radius: 50% !important;
+  border: none !important;
+}
+
+.react-datepicker__day--selecting-range-start::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-width: 2px !important;
+  border-style: dashed !important;
+  border-radius: 50% 0 0 50% !important;
+  border-color: rgba(0, 0, 0, 0.12) transparent rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.12) !important;
+}
+
+.react-datepicker__day--selecting-range-end {
+  position: relative !important;
+  z-index: 2;
+}
+
+.react-datepicker__day--selecting-range-end::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-width: 2px !important;
+  border-style: dashed !important;
+  border-radius: 0 50% 50% 0 !important;
+  border-color: rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.12) rgba(0, 0, 0, 0.12) transparent !important;
+  z-index: 1;
+}
+
+/* Disabled Day */
+.react-datepicker__day--disabled {
+  color: rgba(0, 0, 0, 0.38); /* MUI disabled color */
+}
+
+/* Outside Month Day */
+.react-datepicker__day--outside-month {
+  color: rgba(0, 0, 0, 0.38); /* MUI "secondary" color for days outside month */
+}
+
+.react-datepicker__week {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  margin: 2px 0;
+}
