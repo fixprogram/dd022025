@@ -1,45 +1,39 @@
-import { createTheme, IconButton, Input, InputAdornment, useMediaQuery } from '@mui/material'
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import { IconButton, Input, InputAdornment, useMediaQuery, useTheme } from '@mui/material'
+import { ChangeEvent, useCallback, useRef } from 'react'
 
 import SearchIcon from '@mui/icons-material/Search'
-import { useAppDispatch, useAppSelector } from '../../hooks'
+import { useAppDispatch, useAppSelector, useClickOutside } from '../../hooks'
 import { searchChart } from './chartSlice'
 
 export const SearchChart = () => {
-  const theme = createTheme()
+  const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
-  const [searchActive, setSearchActive] = useState(!isMobile)
   const searchQuery = useAppSelector(state => state.chart.searchQuery)
   const dispatch = useAppDispatch()
 
-  const handleSearchQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch(searchChart(event.target.value))
+  const handleSearchQueryChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      dispatch(searchChart(event.target.value))
+    },
+    [dispatch]
+  )
+
+  const searchInputRef = useRef<HTMLInputElement | null>(null)
+
+  useClickOutside(searchInputRef, () => {
+    if (searchQuery === '') {
+      dispatch(searchChart(null))
+    }
+  })
+
+  const handleOpenSearch = () => {
+    dispatch(searchChart('')) // It'll shrink the logo
   }
 
-  const searchInputRef = useRef(null)
-
-  useEffect(() => {
-    if (searchActive) {
-      const handleClickOutside = (event: MouseEvent) => {
-        if (
-          searchInputRef.current &&
-          !searchInputRef.current.contains(event.target) &&
-          searchQuery === ''
-        ) {
-          setSearchActive(false)
-        }
-      }
-      document.addEventListener('mousedown', handleClickOutside)
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside)
-      }
-    }
-  }, [searchActive, searchInputRef, searchQuery])
-
-  if (!searchActive) {
+  if (searchQuery === null && isMobile) {
     return (
-      <IconButton color="inherit" onClick={() => setSearchActive(true)}>
+      <IconButton color="inherit" onClick={handleOpenSearch}>
         <SearchIcon color="secondary" />
       </IconButton>
     )
@@ -55,9 +49,9 @@ export const SearchChart = () => {
       disableUnderline
       ref={searchInputRef}
       fullWidth
-      autoFocus
+      autoFocus={isMobile}
       placeholder="Search…"
-      value={searchQuery}
+      value={searchQuery ?? ''}
       onChange={handleSearchQueryChange}
       sx={{ backgroundColor: 'rgba(0,0,0,.06)', borderRadius: '4px', padding: '4px 8px' }}
     />

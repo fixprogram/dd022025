@@ -8,7 +8,7 @@ import {
   Typography,
   useMediaQuery
 } from '@mui/material'
-import Logo from './assets/logo.svg'
+
 import { AddChart } from './features/chart/AddChart'
 import { SearchChart } from './features/chart/SearchChart'
 import { ChartList } from './components/ChartList'
@@ -17,9 +17,10 @@ import { ChartView } from './components/ChartView'
 import { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
+import { Logo } from './components/Logo'
 
 function App() {
-  const charts = useAppSelector(state => state.chart.charts)
+  const searchQuery = useAppSelector(state => state.chart.searchQuery)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -42,21 +43,15 @@ function App() {
         position="static"
         sx={{ background: 'white', boxShadow: 0, borderBottom: '1px solid #E0E0E0' }}
       >
-        <Toolbar sx={{ display: 'flex', gap: 2 }}>
-          <Box
-            component="img"
-            src={Logo}
-            alt="Logo"
-            sx={{
-              width: '120px',
-              height: '24px',
-              marginRight: 'auto'
-            }}
-          />
-          <SearchChart />
-          <IconButton edge="start" color="secondary" onClick={toggleMenu} aria-label="menu">
-            {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
-          </IconButton>
+        <Toolbar sx={{ display: 'flex' }}>
+          <Logo isFull={searchQuery === null} />
+
+          <Box display={'flex'} gap={2} flexGrow={1} justifyContent={'flex-end'}>
+            <SearchChart />
+            <IconButton edge="start" color="secondary" onClick={toggleMenu} aria-label="menu">
+              {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
 
@@ -72,7 +67,7 @@ function App() {
             paddingX: 2
           }}
         >
-          <ChartList onCloseMenu={toggleMenu} />
+          <ChartList onSelectChart={toggleMenu} />
           <AddChart />
         </Box>
       ) : (
@@ -83,37 +78,7 @@ function App() {
 
   const DesktopLayout = () => (
     <Box sx={{ display: 'flex', height: '100vh' }}>
-      <Box
-        sx={{
-          width: '256px',
-          paddingY: 4,
-          paddingX: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 2,
-          borderRight: '1px solid rgba(0, 0, 0, .12)',
-          backgroundColor: 'white'
-        }}
-      >
-        <Box
-          component="img"
-          src={Logo}
-          alt="Logo"
-          sx={{
-            width: '120px',
-            height: '24px'
-          }}
-        />
-        <SearchChart />
-        <AddChart />
-        {charts.length === 0 ? (
-          <Typography align="center" color="secondary">
-            No charts
-          </Typography>
-        ) : (
-          <ChartList />
-        )}
-      </Box>
+      <Sidebar />
       <ChartView />
     </Box>
   )
@@ -124,3 +89,33 @@ function App() {
 }
 
 export default App
+
+function Sidebar() {
+  const charts = useAppSelector(state => state.chart.charts)
+
+  return (
+    <Box
+      sx={{
+        width: '256px',
+        paddingY: 4,
+        paddingX: 2,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2,
+        borderRight: '1px solid rgba(0, 0, 0, .12)',
+        backgroundColor: 'white'
+      }}
+    >
+      <Logo />
+      <SearchChart />
+      <AddChart />
+      {charts.length === 0 ? (
+        <Typography align="center" color="secondary">
+          No charts
+        </Typography>
+      ) : (
+        <ChartList />
+      )}
+    </Box>
+  )
+}

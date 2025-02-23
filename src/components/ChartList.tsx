@@ -11,71 +11,88 @@ import {
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { useMemo, useState } from 'react'
 import type { FC, MouseEvent } from 'react'
-import { removeChart, selectChart } from '../features/chart/chartSlice'
+import { Chart, editChart, removeChart, selectChart } from '../features/chart/chartSlice'
 
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
+import { ChartForm, ChartFormData } from './ChartForm'
 
-export const ChartList: FC<{ onCloseMenu: VoidFunction }> = ({ onCloseMenu }) => {
+export const ChartList: FC<{ onSelectChart?: () => void }> = ({ onSelectChart }) => {
+  const [open, setOpen] = useState(false)
+
   const { charts, activeChart, searchQuery } = useAppSelector(state => state.chart)
+  const dispatch = useAppDispatch()
+
   const filteredCharts = useMemo(
-    () => charts.filter(({ name }) => name.toLowerCase().includes(searchQuery.toLowerCase())),
+    () =>
+      charts.filter(({ name }) => name.toLowerCase().includes((searchQuery ?? '').toLowerCase())),
     [charts, searchQuery]
   )
 
-  const [contextMenuAnchorEl, setContextMenuAnchorEl] = useState<null | HTMLElement>(null)
-  const [contentMenuElId, setContentMenuElId] = useState<number | null>(null)
+  const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null)
+  const [selectedChart, setSelectedChart] = useState<Chart | null>(null)
 
-  const dispatch = useAppDispatch()
-
-  const handleContextMenu = (event: MouseEvent<HTMLElement>, id: number) => {
-    event.preventDefault()
-    setContextMenuAnchorEl(event.currentTarget)
-    setContentMenuElId(id)
+  const handleOpenMenu = (event: MouseEvent<HTMLElement>, chart: Chart) => {
+    event.stopPropagation()
+    setMenuAnchor(event.currentTarget)
+    setSelectedChart(chart)
   }
 
-  const handleCloseContextMenu = () => {
-    setContextMenuAnchorEl(null)
+  const handleCloseMenu = () => {
+    setMenuAnchor(null)
   }
 
   const handleDeleteChart = () => {
-    dispatch(removeChart(contentMenuElId!))
-    handleCloseContextMenu()
+    if (selectedChart) {
+      dispatch(removeChart(selectedChart.id))
+      setSelectedChart(null)
+    }
+    handleCloseMenu()
+  }
+
+  const handleEditChart = () => {
+    setOpen(true)
+  }
+
+  const handleFormSubmit = (data: ChartFormData) => {
+    if (selectedChart) {
+      dispatch(editChart({ ...data, id: selectedChart.id }))
+      setOpen(false)
+    }
   }
 
   return (
     <>
       <Box sx={{ backgroundColor: 'white', height: '100%', overflowY: 'auto' }}>
         {charts.length === 0 ? (
-          <Typography align="center" sx={{ p: 2 }}>
+          <Typography fontWeight={500} fontSize={20} lineHeight={'32px'} align="center" p={2}>
             No charts created yet.
           </Typography>
         ) : (
           <List sx={{ marginTop: 2 }}>
-            {filteredCharts.map(({ id, name }) => (
-              <ListItem disablePadding key={id}>
+            {filteredCharts.map(chart => (
+              <ListItem disablePadding key={chart.id}>
                 <ListItemButton
                   sx={{
                     display: 'flex',
                     justifyContent: 'space-between',
-                    backgroundColor: activeChart?.id === id ? '#D7E3FF' : 'inherit',
-                    borderRadius: '4px'
+                    backgroundColor: activeChart?.id === chart.id ? '#D7E3FF' : 'inherit',
+                    borderRadius: '4px',
+                    ':hover': {
+                      backgroundColor: activeChart?.id === chart.id ? '#D7E3FF' : 'inherit'
+                    }
                   }}
                   onClick={() => {
-                    dispatch(selectChart(id))
-
-                    onCloseMenu()
+                    dispatch(selectChart(chart.id))
+                    onSelectChart?.()
                   }}
                 >
-                  <Typography variant="h6">{name}</Typography>
+                  <Typography variant="h6">{chart.name}</Typography>
                   <IconButton
                     edge="end"
                     aria-label="actions"
-                    onClick={e => {
-                      e.stopPropagation()
-                      handleContextMenu(e, id)
-                    }}
+                    onClick={e => handleOpenMenu(e, chart)}
                   >
                     <MoreVertIcon />
                   </IconButton>
@@ -85,12 +102,8 @@ export const ChartList: FC<{ onCloseMenu: VoidFunction }> = ({ onCloseMenu }) =>
           </List>
         )}
       </Box>
-      <Menu
-        anchorEl={contextMenuAnchorEl}
-        open={Boolean(contextMenuAnchorEl)}
-        onClose={handleCloseContextMenu}
-      >
-        <MenuItem onClick={() => {}}>
+      <Menu anchorEl={menuAnchor} open={Boolean(menuAnchor)} onClose={handleCloseMenu}>
+        <MenuItem onClick={handleEditChart}>
           <EditIcon fontSize="small" sx={{ mr: 1 }} />
           Edit
         </MenuItem>
@@ -99,6 +112,24 @@ export const ChartList: FC<{ onCloseMenu: VoidFunction }> = ({ onCloseMenu }) =>
           Delete
         </MenuItem>
       </Menu>
+
+      {selectedChart && open ? (
+        <ChartForm
+          open={true}
+          onClose={() => setSelectedChart(null)}
+          onSubmit={handleFormSubmit}
+          title="Edit Chart"
+          initialValues={{
+            name: selectedChart.name,
+            type: selectedChart.type,
+            color: selectedChart.color,
+            dataseries: selectedChart.dataseries,
+            xAxisName: selectedChart.xAxisName,
+            yAxisName: selectedChart.yAxisName,
+            description: selectedChart.description
+          }}
+        />
+      ) : null}
     </>
   )
 }

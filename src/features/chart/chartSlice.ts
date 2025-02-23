@@ -1,21 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
+export const chartTypes = ['line', 'bar'] as const
+export const chartColors = ['blue', 'red', 'green', 'yellow', 'orange'] as const
+
 export interface Chart {
   id: number
   name: string
-  type: string
-  color: string
+  type: (typeof chartTypes)[number]
+  color: (typeof chartColors)[number]
   dataseries: string
   xAxisName: string
   yAxisName: string
   description: string
 }
 
-const initialState: { charts: Chart[]; activeChart: Chart | null; searchQuery: string } = {
+const initialState: { charts: Chart[]; activeChart: Chart | null; searchQuery: string | null } = {
   charts: [],
   activeChart: null,
-  searchQuery: ''
+  searchQuery: null
 }
 
 export const counterSlice = createSlice({
@@ -24,27 +27,29 @@ export const counterSlice = createSlice({
   reducers: {
     createChart: (state, { payload: chart }: PayloadAction<Omit<Chart, 'id'>>) => {
       state.charts.push({ ...chart, id: Date.now() })
-      if (state.charts.length === 1) {
+      if (!state.activeChart) {
         state.activeChart = state.charts[0]
       }
     },
-    editChart: ({ charts }, { payload: chart }: PayloadAction<Chart>) => {
-      charts.splice(
-        charts.findIndex(({ id }) => id === chart.id),
+    editChart: (state, { payload: chart }: PayloadAction<Chart>) => {
+      state.charts.splice(
+        state.charts.findIndex(({ id }) => id === chart.id),
         1,
         chart
       )
+      if (state.activeChart?.id === chart.id) state.activeChart = chart
     },
-    removeChart: ({ charts }, { payload }: PayloadAction<number>) => {
-      charts.splice(
-        charts.findIndex(({ id }) => id === payload),
+    removeChart: (state, { payload }: PayloadAction<number>) => {
+      state.charts.splice(
+        state.charts.findIndex(({ id }) => id === payload),
         1
       )
+      if (state.activeChart?.id === payload) state.activeChart = null
     },
     selectChart: (state, { payload }: PayloadAction<number>) => {
       state.activeChart = state.charts.find(({ id }) => id === payload) || null
     },
-    searchChart: (state, { payload }: PayloadAction<string>) => {
+    searchChart: (state, { payload }: PayloadAction<string | null>) => {
       state.searchQuery = payload
     }
   }

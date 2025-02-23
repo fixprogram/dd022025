@@ -1,18 +1,15 @@
-import { Box, createTheme, Paper, Typography, useMediaQuery } from '@mui/material'
-import { useAppSelector } from '../hooks'
+import { Box, Paper, Typography } from '@mui/material'
 import { AddChart } from '../features/chart/AddChart'
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
-import charts from '../dataseries.json' with {type: 'json'}
-import { DateRangePicker } from './DateRangePicker';
-import { useState } from 'react';
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
+import { DateRangePicker } from './DateRangePicker'
+import { useIsMobile } from '../hooks/useIsMobile'
+import { useChartConfig } from '../hooks/useChartConfig'
 
 export const ChartView = () => {
-  const chart = useAppSelector(state => state.chart.activeChart)
-  const [dateRange, setDateRange] = useState<[Date, Date] | null>(null)
+  const isMobile = useIsMobile()
 
-  const theme = createTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const chart = useChartConfig()
 
   if (isMobile && !chart) {
     return (
@@ -24,86 +21,74 @@ export const ChartView = () => {
           alignItems: 'center',
           flexGrow: 1,
           gap: 3,
-          backgroundColor: 'white'
+          backgroundColor: 'rgb(250,250,250)'
         }}
       >
-        <Typography fontWeight={500}>No charts created yet.</Typography>
+        <Typography fontWeight={500} fontSize={20} lineHeight={'32px'}>
+          No charts created yet.
+        </Typography>
         <AddChart />
       </Box>
     )
   }
   if (!chart) {
     return (
-      <Box sx={{ flexGrow: 1, p: 2 }}>
-        <Paper sx={{ p: 2 }}>
-          <Typography>No charts created yet</Typography>
+      <Box sx={{ flexGrow: 1 }}>
+        <Paper
+          sx={{
+            m: 2,
+            p: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100%',
+            gap: 3,
+            backgroundColor: 'white',
+            boxShadow: '0px 0px 0px 1px #E0E0E0'
+          }}
+        >
+          <Typography fontWeight={500} fontSize={20} lineHeight={'32px'}>
+            No charts created yet.
+          </Typography>
           <AddChart />
         </Paper>
       </Box>
     )
   }
 
-  const chartData = charts.find(it => it.name === chart!.dataseries)!
-  const initialDates = [chartData!.dataseries[0].date, chartData.dataseries.at(-1)!.date]
-  const options: Highcharts.Options = {
-    chart: {
-      type: chart.type, 
-      
-    },
-    title: {
-      text: ''
-    },
-    legend: {
-      enabled: false
-    },
-    xAxis: {
-      type: 'datetime', 
-      labels: {
-        formatter: function () {
-          return Highcharts.dateFormat('%Y-%m-%d', this.value);
-        },
-      },
-    },
-    yAxis: {
-      title: {
-        text: '°C',
-      },
-    },
-    
-    series: [charts.find(it => it.name === chart.dataseries)!].map(({dataseries}) => ({
-      data: dataseries
-        .filter((point) => {
-          if(!dateRange) return true
-          const date = new Date(point.date);
-          return date >= dateRange[0] && date <= dateRange[1];
-        })
-        .map((point) => ({
-          x: new Date(point.date).getTime(), 
-          y: point.value,
-        })),
-        color: chart.color
-    })),
-    credits: {
-      enabled: false, 
-    },
-  };
+  const { options, initialDates, setDateRange, name, description } = chart
 
   return (
     <Box sx={{ flexGrow: 1, p: 2 }}>
-      <Paper sx={{ p: 2, height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-        <Box sx={{ maxWidth: 900, width: '100%' }}>
+      <Paper
+        sx={{
+          p: 2,
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0px 0px 0px 1px #E0E0E0'
+        }}
+      >
+        <Box maxWidth={900} width={'100%'}>
+          <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'} mb={3}>
+            <Typography variant="h6" fontWeight={600} fontSize={24} letterSpacing={0.15}>
+              {name}
+            </Typography>
 
-    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-      
-    <Typography variant="h6" fontWeight={600} fontSize={24} letterSpacing={.15}>{chart.name}</Typography>
+            <DateRangePicker initialDates={initialDates} onChange={setDateRange} />
+          </Box>
 
-<DateRangePicker initialDates={initialDates} onChange={(v) => setDateRange(v)} />
+          <HighchartsReact highcharts={Highcharts} options={options} />
 
-      </Box>
-
-      <HighchartsReact highcharts={Highcharts} options={options} />
+          {description.length ? (
+            <Typography align="center" marginTop={3}>
+              {description}
+            </Typography>
+          ) : null}
         </Box>
-
       </Paper>
     </Box>
   )
