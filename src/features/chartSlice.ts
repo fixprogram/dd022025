@@ -15,9 +15,8 @@ export interface Chart {
   description: string
 }
 
-const initialState: { charts: Chart[]; activeChart: Chart | null; searchQuery: string | null } = {
+const initialState: { charts: Chart[]; searchQuery: string | null } = {
   charts: [],
-  activeChart: null,
   searchQuery: null
 }
 
@@ -27,9 +26,6 @@ export const counterSlice = createSlice({
   reducers: {
     createChart: (state, { payload: chart }: PayloadAction<Omit<Chart, 'id'>>) => {
       state.charts.push({ ...chart, id: Date.now() })
-      if (!state.activeChart) {
-        state.activeChart = state.charts[0]
-      }
     },
     editChart: (state, { payload: chart }: PayloadAction<Chart>) => {
       state.charts.splice(
@@ -37,17 +33,12 @@ export const counterSlice = createSlice({
         1,
         chart
       )
-      if (state.activeChart?.id === chart.id) state.activeChart = chart
     },
     removeChart: (state, { payload }: PayloadAction<number>) => {
       state.charts.splice(
         state.charts.findIndex(({ id }) => id === payload),
         1
       )
-      if (state.activeChart?.id === payload) state.activeChart = null
-    },
-    selectChart: (state, { payload }: PayloadAction<number>) => {
-      state.activeChart = state.charts.find(({ id }) => id === payload) || null
     },
     searchChart: (state, { payload }: PayloadAction<string | null>) => {
       state.searchQuery = payload
@@ -55,7 +46,6 @@ export const counterSlice = createSlice({
   }
 })
 
-export const { createChart, editChart, removeChart, selectChart, searchChart } =
-  counterSlice.actions
+export const { createChart, editChart, removeChart, searchChart } = counterSlice.actions
 
 export default counterSlice.reducer

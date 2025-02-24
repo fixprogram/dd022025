@@ -1,15 +1,18 @@
 import { Box, Paper, Typography } from '@mui/material'
-import { AddChart } from '../features/chart/AddChart'
+import { Add } from '../features/add'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import { DateRangePicker } from './DateRangePicker'
-import { useIsMobile } from '../hooks/useIsMobile'
-import { useChartConfig } from '../hooks/useChartConfig'
+import { useIsMobile } from '@/shared/hooks/useIsMobile'
+import { useChartConfig } from '@/shared/hooks/useChartConfig'
+import { NotFound } from './NotFound'
 
 export const ChartView = () => {
   const isMobile = useIsMobile()
 
   const chart = useChartConfig()
+
+  if (!chart) return <NotFound />
 
   if (isMobile && !chart) {
     return (
@@ -24,10 +27,10 @@ export const ChartView = () => {
           backgroundColor: 'rgb(250,250,250)'
         }}
       >
-        <Typography fontWeight={500} fontSize={20} lineHeight={'32px'}>
+        <Typography variant="h6" fontWeight={500} fontSize={20} lineHeight={'32px'}>
           No charts created yet.
         </Typography>
-        <AddChart />
+        <Add />
       </Box>
     )
   }
@@ -48,10 +51,10 @@ export const ChartView = () => {
             boxShadow: '0px 0px 0px 1px #E0E0E0'
           }}
         >
-          <Typography fontWeight={500} fontSize={20} lineHeight={'32px'}>
+          <Typography variant="h6" fontWeight={500} fontSize={20} lineHeight={'32px'}>
             No charts created yet.
           </Typography>
-          <AddChart />
+          <Add />
         </Paper>
       </Box>
     )

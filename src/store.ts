@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import chartReducer from './features/chart/chartSlice'
+import chartReducer from './features/chartSlice'
 
 export const store = configureStore({
   reducer: {

@@ -15,11 +15,11 @@ import {
   Typography
 } from '@mui/material'
 import { useForm, Controller } from 'react-hook-form'
-import data from '../dataseries.json' with { type: 'json' }
+import data from '@/shared/config/dataseries.json' with { type: 'json' }
 
 import { z } from 'zod'
 import { useCallback } from 'react'
-import { chartColors, chartTypes } from '../features/chart/chartSlice'
+import { chartColors, chartTypes } from '../features/chartSlice'
 
 const schema = z.object({
   name: z.string().min(1, 'Required field'),
@@ -63,7 +63,10 @@ export const ChartForm = ({ open, title, initialValues, onClose, onSubmit }: Cha
       slotProps={{
         paper: {
           component: 'form',
-          onSubmit: handleSubmit(onSubmit)
+          onSubmit: handleSubmit(data => {
+            onSubmit(data)
+            reset()
+          })
         }
       }}
     >

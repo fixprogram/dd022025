@@ -1,23 +1,10 @@
+import { ChartForm } from '@/components/ChartForm'
 import { Button } from '@mui/material'
-import { useState } from 'react'
-
-import { useAppDispatch } from '../../hooks'
-
+import { useAdd } from './useAdd'
 import AddIcon from '@mui/icons-material/Add'
-import { createChart } from './chartSlice'
-import { ChartForm, ChartFormData } from '../../components/ChartForm'
 
-export const AddChart = () => {
-  const [modalOpen, setModalOpen] = useState(false)
-  const dispatch = useAppDispatch()
-
-  const handleOpenModal = () => setModalOpen(true)
-  const handleCloseModal = () => setModalOpen(false)
-
-  const onSubmit = (data: ChartFormData) => {
-    dispatch(createChart(data))
-    handleCloseModal()
-  }
+export const Add = () => {
+  const { modalOpen, handleAdd, handleOpenModal, handleCloseModal } = useAdd()
 
   return (
     <>
@@ -33,7 +20,7 @@ export const AddChart = () => {
       <ChartForm
         open={modalOpen}
         onClose={handleCloseModal}
-        onSubmit={onSubmit}
+        onSubmit={handleAdd}
         title="Add Chart"
         initialValues={{
           name: '',

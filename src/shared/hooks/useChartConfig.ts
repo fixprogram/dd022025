@@ -1,8 +1,9 @@
-import { useAppSelector } from '../hooks'
-import data from '../dataseries.json' with { type: 'json' }
+import data from '@/shared/config/dataseries.json' with { type: 'json' }
 import Highcharts from 'highcharts'
 import { useState } from 'react'
-import { normalizeDate } from '../utils'
+import { useAppSelector } from '@/shared/hooks/hooks'
+import { normalizeDate } from '@/utils'
+import { useParams } from 'react-router-dom'
 
 const chartTitleStyle = {
   fontFamily: 'Roboto',
@@ -13,7 +14,10 @@ const chartTitleStyle = {
 }
 
 export const useChartConfig = () => {
-  const activeChart = useAppSelector(state => state.chart.activeChart)
+  const { chartId } = useParams()
+  const activeChart = useAppSelector(state =>
+    state.chart.charts.find(({ id }) => id === Number(chartId))
+  )
   const [dateRange, setDateRange] = useState<[Date, Date] | null>(null)
 
   if (!activeChart) return null
