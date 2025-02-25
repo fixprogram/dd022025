@@ -95,6 +95,8 @@ export const DateRangePicker: FC<{
   return (
     <FormControl variant="outlined" fullWidth sx={{ maxWidth: 233 }}>
       <DatePicker
+        minDate={initialDates[0]}
+        maxDate={initialDates[1]}
         selectsRange={true}
         startDate={startDate}
         formatWeekDay={nameOfDay => nameOfDay.slice(0, 1)}
